@@ -8,3 +8,10 @@ conan_basic_setup()
 # set up our executable
 add_executable(curly src/main.c)
 target_link_libraries(curly ${CONAN_LIBS})
+
+find_library(GSASL_LIB gsasl)
+
+if(GSASL_LIB)
+	target_link_libraries(curly gsasl)
+endif()
+
