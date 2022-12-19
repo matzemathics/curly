@@ -1,5 +1,6 @@
 [requires]
 libcurl/7.86.0
+jansson/2.14
 
 [generators]
 cmake
