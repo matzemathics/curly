@@ -9,8 +9,8 @@ conan_basic_setup()
 add_executable(curly src/main.c)
 target_link_libraries(curly ${CONAN_LIBS})
 
+# support gsasl if installed
 find_library(GSASL_LIB gsasl)
-
 if(GSASL_LIB)
 	target_link_libraries(curly gsasl)
 endif()
