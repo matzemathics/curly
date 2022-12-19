@@ -43,7 +43,7 @@ int main(void)
     sprintf(image_name, "%s-%s-%s--%s.png", year, month, day, title);
 
     printf("saving as %s\n", image_name);
-    FILE *image_file = fopen(image_name, "w");
+    FILE *image_file = fopen(image_name, "wb");
 
     // query the image
     curl_easy_reset(curl);
