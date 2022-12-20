@@ -21,6 +21,12 @@ int main(void)
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, tmp_file);
     CURLcode res = curl_easy_perform(curl);
 
+    if (res != CURLE_OK)
+    {
+        fprintf(stderr, "curl error: %s\n", curl_easy_strerror(res));
+        return 1;
+    }
+
     rewind(tmp_file);
 
     json_t *json = json_loadf(tmp_file, 0, NULL);
@@ -50,6 +56,12 @@ int main(void)
     curl_easy_setopt(curl, CURLOPT_URL, image_link);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, image_file);
     res = curl_easy_perform(curl);
+
+    if (res != CURLE_OK)
+    {
+        fprintf(stderr, "curl error: %s\n", curl_easy_strerror(res));
+        return 1;
+    }
 
     curl_easy_cleanup(curl);
     fclose(tmp_file);
